@@ -1,47 +1,48 @@
 <template>
     <div>
         <h1>评论区</h1>
-        <!-- 将添加方法传入子组件 -->
-        <Add :addComments="addComments"/>
-        <!-- 将comments对象 和删除方法传入子组件 -->
-        <List :comments="comments" :deleteComment='deleteComment'/>
+        <TodoHeader :addmsg="addmsg"/>        
+        <TodoList :msgs="msgs" :deletemsgs="deletemsgs"/> 
+        <TodoFooter :msgs='msgs' :deleteSelected="deleteSelected" :SelectAll='SelectAll'/> 
     </div>
 </template>
 <script>
-import Add from './components/Add.vue'
-import List from './components/List.vue'
+import TodoFooter from './components/TodoFooter'
+import TodoHeader from './components/TodoHeader'
+import TodoList from './components/TodoList'
 export default {
     data(){
         return{
-           comments :[
-               {
-                   name:'xiaop',
-                   content:'vue yes'
-               },
-               {
-                   name:'xjy',
-                   content:'I love you'
-               },
-               {
-                   name:'adfasd',
-                   content:'qweqwewqe'
-               }
-           ]
+            msgs:[
+                {title:'vue good',selected:false},
+                {title:'vue best',selected:true},
+                {title:'i love you',selected:false}
+            ]
         }
     },
     methods:{
-        addComments(comment){
-            // 在首行添加
-            this.comments.unshift(comment);
+        addmsg(msg){
+            this.msgs.unshift(msg);
         },
-        deleteComment(index){
-            this.comments.splice(index,1);
+        deletemsgs(index){
+            this.msgs.splice(index,1);
+        },
+        deleteSelected(){
+            this.msgs=this.msgs.filter(msg => !msg.selected);
+        },
+        SelectAll(isDelete){
+            if(isDelete){
+                this.msgs.forEach(msg=> msg.selected=true)
+            }
+            else{
+                this.msgs.forEach(msg=> msg.selected=false)
+            }
         }
     },
-    // 必须要引入import的的组件
     components:{
-        Add,
-        List
+        TodoList,
+        TodoHeader,
+        TodoFooter
     }
 }
 </script>
