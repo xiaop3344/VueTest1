@@ -13,11 +13,13 @@ import TodoList from './components/TodoList'
 export default {
     data(){
         return{
-            msgs:[
+            /* msgs:[
                 {title:'vue good',selected:false},
                 {title:'vue best',selected:true},
                 {title:'i love you',selected:false}
-            ]
+            ] */
+            /* 通过浏览器缓存读取数据 */
+            msgs:JSON.parse(window.localStorage.getItem('msgs')||'[]')
         }
     },
     methods:{
@@ -43,6 +45,15 @@ export default {
         TodoList,
         TodoHeader,
         TodoFooter
+    },
+    watch:{
+        msgs:{
+            deep:true,  /* 深度监视 */
+            handler:function(newValue,OldValue){
+               /*  将数据转成json存入缓存中 */
+                window.localStorage.setItem('msgs',JSON.stringify(newValue));
+            }
+        }
     }
 }
 </script>
