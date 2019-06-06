@@ -7,7 +7,8 @@
 </template>
 <script>
 export default {
-    props:['addmsg'],
+    /* 由于是自定义触发事件,没有传参 */
+    /* props:['addmsg'], */
     data() {
             return {
                 title:''
@@ -23,7 +24,10 @@ export default {
             }
             else{
                 const msg={title,selected:true};
-            this.addmsg(msg);
+                /* 直接调用 父组件的自定义事件 */
+            /* this.addmsg(msg); */
+            /* 使用this.$emit 来调用回调函数(自定义组件) */
+            this.$emit("addmsg",msg);
             this.title=''
             }
             

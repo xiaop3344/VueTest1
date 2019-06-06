@@ -1,12 +1,3 @@
-拉取后 需要 npm install
+自定义事件
 
-安装Element-ui
-cnpm install element-ui -S
-
-----2019.5.31  
-config/index.js  
-将 assetsPublicPath: '/',
-修改为assetsPublicPath: './'
-部署Tomcat
-
-https://blog.csdn.net/haochuan9421/article/details/81975966
+需要cnpm install --save pubsub-js  用于组件组件通信,可以 兄弟之间传递都可以

@@ -1,6 +1,7 @@
 <template>
     <div>
-        <input type="checkbox" v-model="isAllSelect"><span>已完成{{selectedCount}}/全部{{msgs.length}}</span>
+        <input type="checkbox" v-model="isAllSelect">
+        <span>已完成{{selectedCount}}/全部{{msgs.length}}</span>
         <button v-show="selectedCount" @click="deleteSelectedMsg">删除选中</button>
     </div>
 </template>

@@ -1,7 +1,10 @@
 <template>
     <div>
         <h1>评论区</h1>
-        <TodoHeader :addmsg="addmsg"/>        
+        <!-- 第一种自定义方法改写成自定义触发事件 @addmsg="addmsg"-->
+        <!-- <TodoHeader @addmsg="addmsg"/>   该方法适用于父子间传递 -->
+        <!-- 第二种方法 -->
+        <TodoHeader ref="header"/>
         <TodoList :msgs="msgs" :deletemsgs="deletemsgs"/> 
         <TodoFooter :msgs='msgs' :deleteSelected="deleteSelected" :SelectAll='SelectAll'/> 
     </div>
@@ -10,6 +13,7 @@
 import TodoFooter from './components/TodoFooter'
 import TodoHeader from './components/TodoHeader'
 import TodoList from './components/TodoList'
+import Pubsub from 'pubsub-js'
 export default {
     data(){
         return{
@@ -40,6 +44,15 @@ export default {
                 this.msgs.forEach(msg=> msg.selected=false)
             }
         }
+    },
+    /* 第二种方法 */
+    mounted(){
+            this.$refs.header.$on("addmsg",this.addmsg)
+
+            /* Pubsub 订阅消息 必须来用箭头函数来指定this为vm对象*/
+            Pubsub.subscribe(msg,(msg,index)=>{
+                this.deletemsgs(index);
+            })
     },
     components:{
         TodoList,
