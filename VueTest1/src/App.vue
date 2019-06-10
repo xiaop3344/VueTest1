@@ -50,7 +50,7 @@ export default {
             this.$refs.header.$on("addmsg",this.addmsg)
 
             /* Pubsub 订阅消息 必须来用箭头函数来指定this为vm对象*/
-            Pubsub.subscribe(msg,(msg,index)=>{
+            Pubsub.subscribe("deleteSelected",(msg,index)=>{
                 this.deletemsgs(index);
             })
     },
