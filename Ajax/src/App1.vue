@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-if="!repoUrl">loading</div>
-        <div v-else>most star repp is <a :href=repoUrl>{{repoName}}</a></div>
+        <div v-else>most star repp is <a :href=repoUrl>{{repoName}}</a></div> 
     </div>
 </template>
 <script>
