@@ -18,8 +18,16 @@
           <el-menu-item index="2-4-3">选项3</el-menu-item>
         </el-submenu>
       </el-submenu>
-      <el-menu-item index="3" >消息中心</el-menu-item>
-      <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+      <el-menu-item index="3" >
+        <a href="#">随心畅谈</a>
+      </el-menu-item>
+      <el-menu-item index="4" >
+        <a href="#">问答</a>
+      </el-menu-item>
+      <el-menu-item index="5" >
+        <a href="#">图吧</a>
+      </el-menu-item>
+      <el-menu-item index="6"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
     </el-menu>
   </div>
 </template>

@@ -5,6 +5,13 @@
                 <img :src="imgurl" @mouseenter="imgurl=imgurl1" @mouseleave="imgurl=imgurl2">
                 <span class="titleFont">寻找</span>
             </a>
+            <!-- <div class="userspan">
+                <img :src="imgurl" alt="">
+                <span>ahah </span>
+            </div> -->
+            <div class="userspan loginclass">
+                <LoginRegister/>
+            </div>
         </div>
         <Navigation/>
     </div>
@@ -12,9 +19,11 @@
     
 <script>
 import Navigation from './Navigation';
+import LoginRegister from './LoginRegister';    
     export default {
         components:{
-            Navigation
+            Navigation,
+            LoginRegister
         },
         data() {
             return {
@@ -48,4 +57,12 @@ a>span:hover {
 color: #eb3434; 
 text-decoration: none; 
 } 
+.userspan{
+    float:right;
+    vertical-align: bottom; 
+}
+.loginclass{
+    padding-top: 45px;
+    padding-right: 30px;
+}
 </style>
