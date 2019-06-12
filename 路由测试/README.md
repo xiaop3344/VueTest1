@@ -44,3 +44,9 @@ routes:[
 <keep-alive>
      <router-view></router-view>
 </keep-alive>
+
+6.向路由目标传递参数
+    1.通过路径传递
+
+    2.通过router-view  <router-view msg='abc'></router-view>
+    并用props 接收 参考App-About
