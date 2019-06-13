@@ -9,6 +9,10 @@ import Article from '../views/Article';
 Vue.use(VueRouter)
 
 export default new VueRouter({
+  hashbang: true,
+  history: false, //这个参数改为false就可以了
+  saveScrollPosition: true,
+  suppressTransitionError: true,
   routes: [{
       path: '/about',
       component: About
@@ -29,12 +33,12 @@ export default new VueRouter({
 
     },
     {
-      path:'',
-      redirect:'/home'
+      path: '',
+      redirect: '/home'
     },
     {
-      path:'/article',
-      component:Article
+      path: '/article',
+      component: Article
     }
     /* ,
     { //当为请求 /时  即默认显示 重定向 About
