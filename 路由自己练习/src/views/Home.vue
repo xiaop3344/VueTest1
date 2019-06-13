@@ -3,7 +3,7 @@
   <div>
     <div class="msgSheet">
       <el-card class="box-card" body-style="{padding-botton:'10px'}">
-        <span class="msgTitle"><a href="#">标题</a></span><span class="commentCount">5</span><br>
+        <span class="msgTitle"><a href="/#/article" class="underlinfalse">标题</a></span><span class="commentCount">5</span><br>
          <span class="msgSummary">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span>
          <br>
          <div class="msgFooter">
@@ -67,4 +67,5 @@
     font-size: 13px;
     text-align: right;
   }
+  
 </style>

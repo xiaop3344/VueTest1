@@ -5,6 +5,7 @@ import About from '../views/About'
 import Home from '../views/Home'
 import News from '../views/News'
 import Message from '../views/Message'
+import Article from '../views/Article';
 Vue.use(VueRouter)
 
 export default new VueRouter({
@@ -27,9 +28,18 @@ export default new VueRouter({
       ]
 
     },
+    {
+      path:'',
+      redirect:'/home'
+    },
+    {
+      path:'/article',
+      component:Article
+    }
+    /* ,
     { //当为请求 /时  即默认显示 重定向 About
       path: '/',
       redirect: '/home'
-    }
+    } */
   ]
 })

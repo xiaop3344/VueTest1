@@ -1,27 +1,68 @@
 <template>
-    <div>
-        <el-button type="text" @click="dialogFormVisible = true" class="loginReginster">登陆/注册</el-button>
+  <div>
+    <el-button type="text" @click="dialogFormVisible = true" class="loginReginster">登陆/注册</el-button>
 
-<el-dialog :visible.sync="dialogFormVisible">
+    <el-dialog :visible.sync="dialogFormVisible" class="">
+      <div id="changeLoginOrRegister">
+        <el-tabs type="border-card">
+          <el-tab-pane label="注册" >
+            <div class="inputform">
+              <el-form :model="form">
+                <el-form-item label="用户名:" :label-width="formLabelWidth">
+                  <el-input v-model="form.name" autocomplete="off" clearable class="inputclass"></el-input>
+                </el-form-item>
+                <el-form-item label="密码:" :label-width="formLabelWidth">
+                  <el-input placeholder="请输入密码" v-model="input" show-password class="inputclass"></el-input>
+                </el-form-item>
+                <el-form-item label="确认密码:" :label-width="formLabelWidth">
+                  <el-input placeholder="请再次输入密码" v-model="input" show-password class="inputclass"></el-input>
+                </el-form-item>
+              </el-form>
+              
+            </div>
+            <div>
+                 <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+              </div>
+          </el-tab-pane>
+          <el-tab-pane label="登陆">
+            <div class="inputform">
+              <el-form :model="form">
+                <el-form-item label="用户名:" :label-width="formLabelWidth">
+                  <el-input v-model="form.name" autocomplete="off" clearable class="inputclass"></el-input>
+                </el-form-item>
+                <el-form-item label="密码:" :label-width="formLabelWidth">
+                  <el-input placeholder="请输入密码" v-model="input" show-password class="inputclass"></el-input>
+                </el-form-item>
+              </el-form>
+              
+            </div>
+            <div>
+                 <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+              </div>
+          </el-tab-pane>
+        </el-tabs>
+      </div>
+      <!-- <el-form :model="form">
+        <el-form-item label="活动名称" :label-width="formLabelWidth">
+          <el-input v-model="form.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="活动区域" :label-width="formLabelWidth">
+          <el-select v-model="form.region" placeholder="请选择活动区域">
+            <el-option label="区域一" value="shanghai"></el-option>
+            <el-option label="区域二" value="beijing"></el-option>
+          </el-select>
+        </el-form-item>
+      </el-form> -->
+      <!-- <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+      </div> -->
 
-  <el-form :model="form">
-    <el-form-item label="活动名称" :label-width="formLabelWidth">
-      <el-input v-model="form.name" autocomplete="off"></el-input>
-    </el-form-item>
-    <el-form-item label="活动区域" :label-width="formLabelWidth">
-      <el-select v-model="form.region" placeholder="请选择活动区域">
-        <el-option label="区域一" value="shanghai"></el-option>
-        <el-option label="区域二" value="beijing"></el-option>
-      </el-select>
-    </el-form-item>
-  </el-form>
-  <div slot="footer" class="dialog-footer">
-    <el-button @click="dialogFormVisible = false">取 消</el-button>
-    <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+    </el-dialog>
+
   </div>
-</el-dialog>
-
-    </div>
 </template>
 
 
@@ -48,6 +89,7 @@
         }],
         dialogTableVisible: false,
         dialogFormVisible: false,
+        input: '',
         form: {
           name: '',
           region: '',
@@ -65,7 +107,40 @@
 </script>
 
 <style>
-    .loginReginster{
-        font-size: 20px;
-    }
+  .inputform{
+    padding-left: 70px;
+  }
+  .loginReginster {
+    font-size: 18px;
+  }
+
+  .el-dialog__header {
+    padding: 10px;
+
+  }
+
+  #changeLoginOrRegister {
+    padding-bottom: 20px;
+    text-align: center;
+  }
+
+  .el-tabs__nav-scroll {
+    text-align: center;
+  }
+
+  .is-top {
+    text-align: center;
+  }
+
+  .el-tabs__nav {
+    float: none;
+  }
+
+  .inputclass {
+    width: 200px;
+    float: left;
+  }
+  .dialog-footer{
+    text-align: center;
+  }
 </style>

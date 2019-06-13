@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <a href="#">
+            <a href="/#/home" class="underlinfalse">
                 <img :src="imgurl" @mouseenter="imgurl=imgurl1" @mouseleave="imgurl=imgurl2">
                 <span class="titleFont">寻找</span>
             </a>
@@ -9,8 +9,9 @@
                 <img :src="imgurl" alt="">
                 <span>ahah </span>
             </div> -->
-            <div class="userspan loginclass">
-                <LoginRegister/>
+            <div class="userspan">
+                 <!-- <LoginRegister class="loginclass"/>  -->
+                <Logined/> 
             </div>
         </div>
         <Navigation/>
@@ -19,11 +20,13 @@
     
 <script>
 import Navigation from './Navigation';
-import LoginRegister from './LoginRegister';    
+import LoginRegister from './LoginRegister';
+import Logined from './Logined';    
     export default {
         components:{
             Navigation,
-            LoginRegister
+            LoginRegister,
+            Logined
         },
         data() {
             return {
@@ -45,15 +48,15 @@ import LoginRegister from './LoginRegister';
 
     }
     
-    a:link { 
+    .underlinfalse:link { 
 color: #27db54; 
 text-decoration: none; 
 } 
-a:visited { 
+.underlinfalse:visited { 
 color: #000000; 
 text-decoration: none; 
 } 
-a>span:hover { 
+.underlinfalse>span:hover { 
 color: #eb3434; 
 text-decoration: none; 
 } 
