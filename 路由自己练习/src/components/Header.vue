@@ -10,8 +10,8 @@
                 <span>ahah </span>
             </div> -->
             <div class="userspan">
-                 <!-- <LoginRegister class="loginclass"/>  -->
-                <Logined/> 
+                <LoginRegister class="loginclass" v-show="!loginflag" :changeloginflag="changeloginflag"/>
+                <Logined v-show="loginflag" :changeloginflag="changeloginflag"/> 
             </div>
         </div>
         <Navigation/>
@@ -32,9 +32,15 @@ import Logined from './Logined';
             return {
                 imgurl:'static/images/icon.gif',
                 imgurl1:'static/images/icon1.gif',
-                imgurl2:'static/images/icon.gif'
+                imgurl2:'static/images/icon.gif',
+                loginflag:false
             }
         },
+        methods:{
+            changeloginflag(){
+                this.loginflag=!this.loginflag;
+            }
+        }
         
     }
 </script>

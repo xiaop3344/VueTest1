@@ -9,7 +9,7 @@
   <el-dropdown-menu slot="dropdown">
     <el-dropdown-item><a href="#" class="underlinfalse">设置</a></el-dropdown-item>
     <el-dropdown-item><a href="#" class="underlinfalse">我的信息</a></el-dropdown-item>
-    <el-dropdown-item><a href="#" class="underlinfalse">退出</a></el-dropdown-item>
+    <el-dropdown-item><a  class="underlinfalse" @click="clicklogout">退出</a></el-dropdown-item>
   </el-dropdown-menu>
 </el-dropdown>
     </a>
@@ -19,7 +19,12 @@
 
 <script>
   export default {
-
+    props:['changeloginflag'],
+    methods:{
+      clicklogout(){
+        this.changeloginflag();
+      }
+    }
   }
 </script>
 

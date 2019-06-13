@@ -28,18 +28,18 @@
           <el-tab-pane label="登陆">
             <div class="inputform">
               <el-form :model="form">
-                <el-form-item label="用户名:" :label-width="formLabelWidth">
-                  <el-input v-model="form.name" autocomplete="off" clearable class="inputclass"></el-input>
+                <el-form-item label="用户名:" :label-width="formLabelWidth" >
+                  <el-input v-model="username" autocomplete="off" clearable class="inputclass" ></el-input>
                 </el-form-item>
                 <el-form-item label="密码:" :label-width="formLabelWidth">
-                  <el-input placeholder="请输入密码" v-model="input" show-password class="inputclass"></el-input>
+                  <el-input placeholder="请输入密码" v-model="password" show-password class="inputclass"></el-input>
                 </el-form-item>
               </el-form>
               
             </div>
             <div>
                  <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+        <el-button type="primary" @click="confirmLogin">确 定</el-button>
               </div>
           </el-tab-pane>
         </el-tabs>
@@ -68,6 +68,7 @@
 
 <script>
   export default {
+    props:['changeloginflag'],
     data() {
       return {
         gridData: [{
@@ -100,9 +101,23 @@
           resource: '',
           desc: ''
         },
-        formLabelWidth: '120px'
-      };
-    }
+        formLabelWidth: '120px',
+        username:'',
+        password:''
+      }
+      
+    },
+    methods: {
+        confirmLogin(){
+          console.info('点击1')
+          if(this.username==='123'&&this.password==='123'){
+            console.info('点击2')
+            this.dialogFormVisible = false
+            console.info(this.changeloginflag)
+            this.changeloginflag();
+          }
+        }
+      },
   };
 </script>
 
