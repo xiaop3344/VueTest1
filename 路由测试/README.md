@@ -47,6 +47,16 @@ routes:[
 
 6.向路由目标传递参数
     1.通过路径传递
-
+        获取参数 用$route.params.id id为传的key
     2.通过router-view  <router-view msg='abc'></router-view>
     并用props 接收 参考App-About
+7.编程式导航 
+    都是点击后跳转到指定地址
+             pushshow(id){
+                this.$router.push(`/home/message/detail/${id}`);
+            },
+            replaceshow(id){
+                this.$router.replace(`/home/message/detail/${id}`);   
+            }
+    实现回退
+    <button @click="$router.back()">回退</button>
