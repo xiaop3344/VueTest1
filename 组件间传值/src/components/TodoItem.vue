@@ -20,11 +20,10 @@ export default {
     },
     methods:{
         deletecurrent(){
-            console.info(this.msg);
             if(window.confirm('是否想删除'+this.msg.title)){
                 /* this.deletemsgs(this.index); */
                     /* 发布消息,在订阅消息处使用 */
-                Pubsub.publish("deleteSelected",this.msg);
+                Pubsub.publish("deleteSelected",this.index); 
             }
         },
         

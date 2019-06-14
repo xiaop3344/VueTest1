@@ -28,6 +28,7 @@ export default {
             /* this.addmsg(msg); */
             /* 使用this.$emit 来调用回调函数(自定义组件) */
             this.$emit("addmsg",msg);
+            this.$emit("showSonMsg",msg);
             this.title=''
             }
             

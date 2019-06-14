@@ -4,9 +4,10 @@
         <!-- 第一种自定义方法改写成自定义触发事件 @addmsg="addmsg"-->
         <!-- <TodoHeader @addmsg="addmsg"/>   该方法适用于父子间传递 -->
         <!-- 第二种方法 -->
-        <TodoHeader ref="header"/>
+        <TodoHeader ref="header" @showSonMsg='showSonMsg'/>
         <TodoList :msgs="msgs" :deletemsgs="deletemsgs"/> 
         <TodoFooter :msgs='msgs' :deleteSelected="deleteSelected" :SelectAll='SelectAll'/> 
+        <h2>title:{{mmss.title}}
     </div>
 </template>
 <script>
@@ -23,12 +24,14 @@ export default {
                 {title:'i love you',selected:false}
             ] */
             /* 通过浏览器缓存读取数据 */
-            msgs:JSON.parse(window.localStorage.getItem('msgs')||'[]')
+            msgs:JSON.parse(window.localStorage.getItem('msgs')||'[]'),
+            mmss:{}
         }
     },
     methods:{
         addmsg(msg){
             this.msgs.unshift(msg);
+           
         },
         deletemsgs(index){
             this.msgs.splice(index,1);
@@ -43,14 +46,20 @@ export default {
             else{
                 this.msgs.forEach(msg=> msg.selected=false)
             }
-        }
+        },
+        showSonMsg:function(msg){
+            console.info(msg); /* 从子组件传来的值 */
+            this.mmss=msg;      /* 将子组件传来的值赋值给父组件属性 */
+        },
+        
     },
     /* 第二种方法 */
     mounted(){
             this.$refs.header.$on("addmsg",this.addmsg)
-
             /* Pubsub 订阅消息 必须来用箭头函数来指定this为vm对象*/
             Pubsub.subscribe("deleteSelected",(msg,index)=>{
+                console.info(msg)
+                console.info(index)
                 this.deletemsgs(index);
             })
     },
