@@ -1,7 +1,6 @@
 /* 路由器模块 */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import About from '../views/About'
 import Home from '../views/Home'
 import News from '../views/News'
 import Message from '../views/Message'
@@ -11,7 +10,7 @@ Vue.use(VueRouter)
 export default new VueRouter({
   routes: [{
       path: '/about',
-      component: About
+      component: resolve=>require(['../views/About'],resolve)
     },
     {
       path: '/home',

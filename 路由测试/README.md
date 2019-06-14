@@ -2,12 +2,14 @@ vue路由
 需要  cnpm install vue-router --save
 
 使用路由3步
-1.定义路由组件  ：写vue
+1.定义路由组件  ：
+    写routes文件夹中德index.js
+    在mainjs中已引入router
 2.注册路由
 routes:[
         {
             path:'/about',
-            component:About
+            component: resolve=>require(['../views/About'],resolve) //实现路由组件的懒加载
         },
         {
             path:'/home',
@@ -60,3 +62,29 @@ routes:[
             }
     实现回退
     <button @click="$router.back()">回退</button>
+
+
+其他:
+1同时有两个router-view
+<div>
+  <h1>User Settings</h1>
+  <NavBar/>
+  <router-view/>
+  <router-view name="helper"/>
+</div>
+
+{
+  path: '/settings',
+  // You could also have named views at the top
+  component: UserSettings,
+  children: [{
+    path: 'emails',
+    component: UserEmailsSubscriptions
+  }, {
+    path: 'profile',
+    components: {
+      default: UserProfile,
+      helper: UserProfilePreview
+    }
+  }]
+}
