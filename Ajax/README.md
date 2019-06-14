@@ -15,3 +15,13 @@ axios.post('/user', {
   .catch(function (error) {
     console.log(error);
   });
+
+  Get 请求
+  axios.get(url).then(response => {
+          const repositories = response.data.items;
+          this.repositories = repositories;
+          this.loading = false;
+        }).catch(error => {
+          this.loading = false;
+          this.errorMsg = '仓库搜索错误'
+        })
