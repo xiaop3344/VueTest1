@@ -7,7 +7,7 @@
         <TodoHeader ref="header" @showSonMsg='showSonMsg'/>
         <TodoList :msgs="msgs" :deletemsgs="deletemsgs"/> 
         <TodoFooter :msgs='msgs' :deleteSelected="deleteSelected" :SelectAll='SelectAll'/> 
-        <h2>title:{{mmss.title}}
+        <h2>title:{{mmss.title}}</h2>
     </div>
 </template>
 <script>
