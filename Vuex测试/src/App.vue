@@ -9,15 +9,18 @@
 </template>
 
 <script>
+import {mapState,mapGetters,mapActions} from 'vuex';
   export default {
     
     computed:{
-      evenOrOdd(){
+      /* evenOrOdd(){
         return this.$store.getters.evenOrOdd
-      }
+      }, */
+      ...mapState(['count']), //对象展开符... 取出需要用的方法或对象
+      ...mapGetters(['evenOrOdd'])
     },
     methods:{
-      increment(){
+     /*  increment(){
         this.$store.dispatch('increment')  //触发store的action调用，可加参数this.$store.dispatch('increment'，arg)
       },
       decrement(){
@@ -28,7 +31,8 @@
       },
       increment_async(){
         this.$store.dispatch('increment_async')
-      }
+      } */
+      ...mapActions(['increment','decrement','increment_if_odd','increment_async'])
     }
 
   }
