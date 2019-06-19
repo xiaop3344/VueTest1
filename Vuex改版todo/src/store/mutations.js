@@ -1,4 +1,5 @@
 import state from './state';
+import {ADDMSG} from './mutations-types';
 export default {
     msgs:state.msgs,
     SelectAll(isDelete){

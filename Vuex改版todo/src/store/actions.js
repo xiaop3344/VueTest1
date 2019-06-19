@@ -1,11 +1,11 @@
 import state from './state';
-
+import {ADDMSG} from './mutations-types';
 export default {
     SelectAll({commit}){
         commit('SelectAll')
     },
-    addmsg({commit}){
-        commit('addmsg')
+    addmsg({commit},msg){
+        commit(ADDMSG,{msg});
        
     },
     deletemsgs({commit}){

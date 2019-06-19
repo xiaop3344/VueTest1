@@ -28,7 +28,7 @@ export default {
             mmss:{}
         }
     },
-    methods:{
+    /* methods:{
         addmsg(msg){
             this.msgs.unshift(msg);
            
@@ -48,11 +48,11 @@ export default {
             }
         },
         showSonMsg:function(msg){
-            console.info(msg); /* 从子组件传来的值 */
-            this.mmss=msg;      /* 将子组件传来的值赋值给父组件属性 */
+            console.info(msg); //从子组件传来的值 
+            this.mmss=msg;      // 将子组件传来的值赋值给父组件属性 
         },
         
-    },
+    }, */
     /* 第二种方法 */
     mounted(){
             this.$refs.header.$on("addmsg",this.addmsg)
