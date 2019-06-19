@@ -6,6 +6,7 @@
   </div>
 </template>
 <script>
+import {mapState,mapGetters,mapActions} from 'vuex';
 export default {
     /* 由于是自定义触发事件,没有传参 */
     /* props:['addmsg'], */
@@ -15,7 +16,7 @@ export default {
             }
         },
     methods:{
-        
+        ...mapActions(['addmsg','showSonMsg']),
         add(){
             
             const title=this.title.trim();
@@ -27,8 +28,10 @@ export default {
                 /* 直接调用 父组件的自定义事件 */
             /* this.addmsg(msg); */
             /* 使用this.$emit 来调用回调函数(自定义组件) */
-            this.$emit("addmsg",msg);
-            this.$emit("showSonMsg",msg);
+            /* this.$emit("addmsg",msg);
+            this.$emit("showSonMsg",msg); */
+            this.addmsg(msg);
+            this.showSonMsg(msg);
             this.title=''
             }
             
