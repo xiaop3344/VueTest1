@@ -1,16 +1,14 @@
-import state from './state';
-import mutations from './mutations';
 export default {
     
-    selectedCount(){
-        return this.msgs.reduce((preTotle,msg)=>preTotle+(msg.selected?1:0),0); 
+    selectedCount(state){
+        return state.msgs.reduce((preTotle,msg)=>preTotle+(msg.selected?1:0),0); 
     },
-    isAllSelect:{
-        get(){
-            return this.selectedCount===this.msgs.length &&this.msgs.length>0;
-        },
-        set(value){ /* value为最新的checkbox的值 */
-            mutations.SelectAll(value);
-        }
+    isAllSelect(state,getters){
+        
+        return getters.selectedCount===getters.totalSize &&getters.selectedCount>0;
+        /* return getters.selectedCount===state.msgs.length &&state.msgs.length>0; */
+    },
+    totalSize(state){
+        return state.msgs.length;
     }
 }

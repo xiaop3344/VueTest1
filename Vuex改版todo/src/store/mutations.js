@@ -1,24 +1,22 @@
-import state from './state';
-import {ADDMSG} from './mutations-types';
+import {ADDMSG,SELECTALL,DELETEMSGS,DELETESELECTED} from './mutations-types';
 export default {
-    msgs:state.msgs,
-    SelectAll(isDelete){
+    [SELECTALL](state,isDelete){
         if(isDelete){
-            this.msgs.forEach(msg=> msg.selected=true)
+            state.msgs.forEach(msg=> msg.selected=true)
         }
         else{
-            this.msgs.forEach(msg=> msg.selected=false)
+            state.msgs.forEach(msg=> msg.selected=false)
         }
     },
-    addmsg(msg){
-        this.msgs.unshift(msg);
+    [ADDMSG](state,msg){
+        state.msgs.unshift(msg);
        
     },
-    deletemsgs(index){
-        this.msgs.splice(index,1);
+    [DELETEMSGS](state,index){
+        state.msgs.splice(index,1);
     },
-    deleteSelected(){
-        this.msgs=this.msgs.filter(msg => !msg.selected);
+    [DELETESELECTED](state){
+        state.msgs=state.msgs.filter(msg => !msg.selected);
     },
 
 }

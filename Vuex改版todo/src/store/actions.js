@@ -1,18 +1,17 @@
-import state from './state';
-import {ADDMSG} from './mutations-types';
+import {ADDMSG,SELECTALL,DELETEMSGS,DELETESELECTED} from './mutations-types';
 export default {
-    SelectAll({commit}){
-        commit('SelectAll')
+    SelectAll({commit},isDelete){
+        commit(SELECTALL,{isDelete})
     },
     addmsg({commit},msg){
-        commit(ADDMSG,{msg});
+        commit(ADDMSG,msg);
        
     },
-    deletemsgs({commit}){
-        commit('deletemsgs')
+    deletemsgs({commit},index){
+        commit(DELETEMSGS,index)
     },
     deleteSelected({commit}){
-        commit('deleteSelected')
+        commit(DELETESELECTED)
     }
 
 }

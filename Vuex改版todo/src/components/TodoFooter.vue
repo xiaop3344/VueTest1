@@ -1,36 +1,29 @@
 <template>
     <div>
         <input type="checkbox" v-model="isAllSelect">
-        <span>已完成{{selectedCount}}/全部{{msgs.length}}</span>
+        <span>已完成{{selectedCount}}/全部{{totalSize}}</span>
         <button v-show="selectedCount" @click="deleteSelectedMsg">删除选中</button>
     </div>
 </template>
 <script>
+import {mapGetters} from 'vuex';
 export default {
-    props:{
-        msgs:Array,
-        deleteSelected:Function,
-        SelectAll:Function
-    },
+    
     computed:{
-        selectedCount(){
-            /* 统计msgs中的selected为true有多少个
-            pretotle 计数,初始值为"," 后面的0
-            如果selected为true则+1 */
-            return this.msgs.reduce((preTotle,msg)=>preTotle+(msg.selected?1:0),0);
-        },
+        ...mapGetters(['totalSize','selectedCount']),
+        
         isAllSelect:{
             get(){
-                return this.selectedCount===this.msgs.length &&this.msgs.length>0;
+                return this.$store.getters.isAllSelect;
             },
             set(value){ /* value为最新的checkbox的值 */
-                this.SelectAll(value);
+                return this.$store.dispatch('SelectAll',value);
             }
         }
     },
     methods:{
         deleteSelectedMsg(){
-            this.deleteSelected();
+            this.$store.dispatch('deleteSelected');
         }
     }
 }

@@ -6,6 +6,7 @@
   </div>
 </template>
 <script>
+import {mapActions} from 'vuex';
 export default {
     /* 由于是自定义触发事件,没有传参 */
     /* props:['addmsg'], */
@@ -15,7 +16,7 @@ export default {
             }
         },
     methods:{
-        ...mapActions(['addmsg','showSonMsg']),
+        ...mapActions(['addmsg']),
         add(){
             
             const title=this.title.trim();
@@ -30,8 +31,8 @@ export default {
             /* this.$emit("addmsg",msg);
             this.$emit("showSonMsg",msg); */
             
-            this.$store.dispatch('addmsg',msg);
-            this.$store.dispatch('showSonMsg',msg);
+            /* this.$store.dispatch('addmsg',msg); */
+            this.addmsg(msg);
             this.title=''
             }
             

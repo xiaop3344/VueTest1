@@ -10,7 +10,6 @@
     </div>
 </template>
 <script>
-import Pubsub from 'pubsub-js'
 export default {
     props:['msg','index'],
     data() {
@@ -23,7 +22,7 @@ export default {
             if(window.confirm('是否想删除'+this.msg.title)){
                 /* this.deletemsgs(this.index); */
                     /* 发布消息,在订阅消息处使用 */
-                Pubsub.publish("deleteSelected",this.index); 
+                this.$store.dispatch('deletemsgs',this.index);
             }
         },
         

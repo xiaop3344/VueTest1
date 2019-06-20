@@ -1,33 +1,27 @@
-自定义事件
+Vuex 实例
 
-需要cnpm install --save pubsub-js  用于组件组件通信,可以 兄弟之间传递都可以
-cnpm install element-ui --save
+mutations:为更新state的状态
+actions:可以为异步操作,Action 提交的是 mutation，而不是直接变更状态。
+state:存储数据
+getters:计算属性,对于state中的数据派生出来的属性例如对列表进行过滤并计数
 
-父组件向子组件传递
-
-1. 父组件:<TodoFooter :msgs='msgs' :deleteSelected="deleteSelected" :SelectAll='SelectAll'/>
-   子组件:
-    props:{
-        msgs:Array,
-        deleteSelected:Function,
-        SelectAll:Function
-    },
-    或者props:['msgs','deleteSelected','SelectAll']
-
-子组件向父组件传递
-
-    子组件:this.$emit("addmsg",msg);/* 使用this.$emit 来调用父组件绑定的回调函数(回调函数名,参数) */
-    父组件:<TodoHeader ref="header"/>
-         mounted(){  加载即绑定
-            this.$refs.header.$on("addmsg",this.addmsg) 
-
-    },
-
-组件之间传递(无需关系)
-    发布消息:Pubsub.publish("deleteSelected",this.index);
-    订阅消息并处理
-    mounted(){
-            Pubsub.subscribe("deleteSelected",(msg,index)=>{
-                this.deletemsgs(index);
-            })
-    }
+action异步例子
+定义action 返回一个promise对象
+actions: {
+  actionA ({ commit }) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        commit('someMutation')
+        resolve('data')  //代表成功后,传出来的数据用then接收
+        <!-- reject('data') -->  //正规情况下是与服务器连接失败调用,传出来的数据用catch接收
+      }, 1000)
+    })
+  }
+}
+返回的promise可以接then 代表成功,data就是上面resolve传过来的东西
+store.dispatch('actionA').then((data) => {
+  console.log(data);
+}).catch(function(reason){   //当失败的时候 进行的操作 同理then 接收的是reject 传过来的数据
+    console.log('rejected');
+    console.log(reason);
+});
