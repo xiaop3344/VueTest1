@@ -4,7 +4,7 @@
             <label >
         <input type="checkbox" v-model="msg.selected"><span>{{msg.title}}</span>
         </label>
-            <span>&nbsp&nbsp&nbsp</span>
+            <span>&nbsp;&nbsp;&nbsp;</span>
             <button v-show="isEnter" @click="deletecurrent">删除</button>
         </li>
     </div>
